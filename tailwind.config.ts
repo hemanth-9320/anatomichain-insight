@@ -22,6 +22,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -46,6 +47,16 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        blockchain: {
+          DEFAULT: "hsl(var(--blockchain))",
+          foreground: "hsl(var(--blockchain-foreground))",
+          glow: "hsl(var(--blockchain-glow))",
+        },
+        trust: {
+          DEFAULT: "hsl(var(--trust))",
+          foreground: "hsl(var(--trust-foreground))",
+          glow: "hsl(var(--trust-glow))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

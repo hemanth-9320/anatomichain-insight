@@ -1,12 +1,46 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import HeroSection from "@/components/HeroSection";
+import AnatomySelector from "@/components/AnatomySelector";
+import InsuranceComparison from "@/components/InsuranceComparison";
+import BlockchainVerification from "@/components/BlockchainVerification";
+import EducationHub from "@/components/EducationHub";
+import Navigation from "@/components/Navigation";
 
 const Index = () => {
+  const [selectedAnatomy, setSelectedAnatomy] = useState<string[]>([]);
+  const [currentStep, setCurrentStep] = useState<"select" | "compare" | "verify">("select");
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      
+      {currentStep === "select" && (
+        <>
+          <HeroSection onGetStarted={() => setCurrentStep("select")} />
+          <AnatomySelector 
+            selectedAreas={selectedAnatomy}
+            onAreasChange={setSelectedAnatomy}
+            onNext={() => setCurrentStep("compare")}
+          />
+        </>
+      )}
+      
+      {currentStep === "compare" && (
+        <InsuranceComparison 
+          selectedAreas={selectedAnatomy}
+          onBack={() => setCurrentStep("select")}
+          onSelectPlan={() => setCurrentStep("verify")}
+        />
+      )}
+      
+      {currentStep === "verify" && (
+        <BlockchainVerification 
+          selectedAreas={selectedAnatomy}
+          onBack={() => setCurrentStep("compare")}
+        />
+      )}
+      
+      <EducationHub />
     </div>
   );
 };
